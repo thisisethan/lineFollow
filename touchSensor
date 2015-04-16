@@ -1,0 +1,12 @@
+int main()
+{
+	motor(0, 95);
+	motor(1, 100);
+	while (digital(8) !=1)
+	
+	motor(0, -95);
+	motor(1, -100);
+	msleep(5000);
+	
+	return 0;	
+}

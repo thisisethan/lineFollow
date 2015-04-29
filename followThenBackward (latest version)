@@ -2,9 +2,9 @@
 
 int main()
 {
-	int msec = 0;
-	clock_t start = clock(?), diff;
-	while (digital(8) != 1 && msec <= 5000)
+	long msec = 0;
+	clock_t start = clock(), diff;
+	while (digital(8) != 1 && msec <= 4)
 	{
 		if (analog(6) > 512)
 		{
@@ -19,9 +19,10 @@ int main()
 				motor(3, 20);
 		}
 		diff = clock() - start;
-		msec = diff * 1000 / CLOCKS_PER_SEC;
-	}
-
+		msec = diff * 10 / CLOCKS_PER_SEC;
+	printf("millisec: %li\n", msec);
+		}
+	
 	return 0;
 	
 }

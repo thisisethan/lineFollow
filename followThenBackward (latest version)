@@ -1,9 +1,10 @@
+#include <time.h>
+
 int main()
 {
-	//we need to figure out where to put this msleep: other ideas= use a for loop
-msleep(15000000);
-{
-	while (digital(8) != 1)
+	int msec = 0;
+	clock_t start = clock(?), diff;
+	while (digital(8) != 1 && msec <= 5000)
 	{
 		if (analog(6) > 512)
 		{
@@ -17,16 +18,11 @@ msleep(15000000);
 				motor(0, 100);
 				motor(3, 20);
 		}
-	
+		diff = clock() - start;
+		msec = diff * 1000 / CLOCKS_PER_SEC;
 	}
 
-	motor(0, -100);
-	motor(3, -100);
-	msleep(12500);
-	motor(0, -100);
-	motor(3, -100);
-
-}
 	return 0;
+	
 }
 

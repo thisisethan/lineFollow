@@ -4,7 +4,7 @@ int main()
 {
 	long msec = 0;
 	clock_t start = clock(), diff;
-	while (digital(8) != 1 && msec <= 4)
+	while (msec <= 4)
 	{
 		if (analog(6) > 512)
 		{
@@ -20,10 +20,20 @@ int main()
 		}
 		diff = clock() - start;
 		msec = diff * 10 / CLOCKS_PER_SEC;
-	printf("millisec: %li\n", msec);
+	printf("seconds_running: %li\n", msec);
 		}
+		
+		
+	////following code does not work
+	if (digital(8) != 0)
+	{
+		motor(0, -100);
+		motor(3, -100);
+		msleep(12500);
+		motor(0, -100);
+		motor(3, -100);
+	}
 	
 	return 0;
 	
 }
-

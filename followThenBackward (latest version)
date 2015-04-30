@@ -2,11 +2,11 @@
 
 int main()
 {
-	long msec = 0;
+	long sec = 0;
 	clock_t start = clock(), diff;
-	while (msec <= 4)
+	while (sec <= 4)
 	{
-		if (analog(6) > 512)
+		if (analog(6) < 900)
 		{
 			motor(0, 20);
 			motor(3, 100);
@@ -19,21 +19,17 @@ int main()
 				motor(3, 20);
 		}
 		diff = clock() - start;
-		msec = diff * 10 / CLOCKS_PER_SEC;
-	printf("seconds_running: %li\n", msec);
+		sec = diff * 10 / CLOCKS_PER_SEC;
+	printf("seconds_running: %li\n", sec);
 		}
+		//{
+		//potato 
+		//}
 		
-		
-	////following code does not work
-	if (digital(8) != 0)
-	{
-		motor(0, -100);
-		motor(3, -100);
-		msleep(12500);
-		motor(0, -100);
-		motor(3, -100);
-	}
-	
+	while (digital(8) != 1){}
+	motor(0, -100);
+	motor(3, -100);
+	msleep(12500);
 	return 0;
 	
 }
